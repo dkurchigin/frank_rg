@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ .Title }}</title>
+    </head>
+    <body>
+        <h1>{{ .Title }}</h1>
+        {{if .Error }}
+            <p style="color: red">{{ .Error }}</p>
+        {{end}}
+        <ul>
+            <li><a href="/move/to_parent">&#128511; На уровень выше</a></li>
+            <li><a href="/create/dir">&#128511; Создать директорию (EmptyDir)</a></li>
+            <li><a href="/new">&#128511; Создать новый файл</a></li>
+            {{range .Files}}
+                {{if .IsFile }}
+                    <li>&#128196;<b>{{ .Name }}</b>
+                        <a href="/delete/{{ .Name }}">&#10060;</a>
+                        <a href="/download/{{ .Name }}">&#128229;</a>
+                        <a href="/rename/{{ .Name }}">&#128397;</a>
+                    </li>
+                {{else}}
+                    <li>
+                        <a href="/move/{{ .Name }}">&#128193;<b>{{ .Name }}</b></a>
+                        <a href="/rename/{{ .Name }}">&#128397;</a>
+                    </li>
+
+                {{end}}
+            {{end}}
+        </ul>
+    </body>
+</html>

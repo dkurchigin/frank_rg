@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ .Title }}</title>
+</head>
+<body>
+<h1>{{ .Title }}</h1>
+{{if .Error }}
+<p style="color: red">{{ .Error }}</p>
+{{end}}
+<form enctype="multipart/form-data" action="/upload" method="post">
+    <input type="file" name="myFile" />
+    <input type="submit" value="upload" />
+</form>
+<br>
+<a href="/">Вернуться назад</a>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ .Title }}</title>
+</head>
+<body>
+<h1>{{ .Title }}</h1>
+{{if .Error }}
+<p style="color: red">{{ .Error }}</p>
+{{end}}
+<form enctype="multipart/form-data" action="/make_rename" method="post">
+    <input type="hidden" name="old_name" value="{{ (index .Files 0).Name }}"/>
+    <p>New name for {{ (index .Files 0).Name }}</p>
+    <input type="text" name="new_name"/>
+    <input type="submit" value="rename" />
+</form>
+<br>
+<a href="/">Вернуться назад</a>
+</body>
+</html>
